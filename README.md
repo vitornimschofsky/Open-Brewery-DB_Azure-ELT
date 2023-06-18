@@ -19,3 +19,7 @@ Por fim na camada gold crio uma tabela delta final, para ser consumida no Power 
 
 ARQUITETURA:
 ![arquitetura](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/017904eb-59b0-4208-9c9b-100043c0764a)
+
+Toda a arquitetura foi feita na nuvem do Azure, segui com a seguinte estratégia:
+
+Azure Data Factory: Utilizei para fazer a ingestão 
