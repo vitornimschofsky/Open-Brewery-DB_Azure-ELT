@@ -109,7 +109,7 @@ All code was done in Python and Pyspark.
 
 Below is a screenshot of the tables created in delta.
 
-![delta storage](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/bf6de641-0d2a-4d6c-aa04-7ca8bb19e839)
+![armazenamento delta](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/e173cbf9-af5a-4e21-86c3-64f6661267f4)
 
 
 ● Visualization of the data through a Dashboard in PowerBI:
