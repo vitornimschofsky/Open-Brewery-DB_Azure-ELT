@@ -1,0 +1,292 @@
+{
+    "name": "pip_ingest_openbrewery",
+    "properties": {
+        "activities": [
+            {
+                "name": "pagination",
+                "type": "Until",
+                "dependsOn": [
+                    {
+                        "activity": "initial page",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "userProperties": [],
+                "typeProperties": {
+                    "expression": {
+                        "value": "@equals(activity('breweries').output.Response, '[]')",
+                        "type": "Expression"
+                    },
+                    "activities": [
+                        {
+                            "name": "copy data to land",
+                            "type": "Copy",
+                            "dependsOn": [
+                                {
+                                    "activity": "breweries",
+                                    "dependencyConditions": [
+                                        "Succeeded"
+                                    ]
+                                }
+                            ],
+                            "policy": {
+                                "timeout": "0.12:00:00",
+                                "retry": 0,
+                                "retryIntervalInSeconds": 30,
+                                "secureOutput": false,
+                                "secureInput": false
+                            },
+                            "userProperties": [],
+                            "typeProperties": {
+                                "source": {
+                                    "type": "JsonSource",
+                                    "storeSettings": {
+                                        "type": "HttpReadSettings",
+                                        "requestMethod": "GET"
+                                    },
+                                    "formatSettings": {
+                                        "type": "JsonReadSettings"
+                                    }
+                                },
+                                "sink": {
+                                    "type": "JsonSink",
+                                    "storeSettings": {
+                                        "type": "AzureBlobStorageWriteSettings"
+                                    },
+                                    "formatSettings": {
+                                        "type": "JsonWriteSettings"
+                                    }
+                                },
+                                "enableStaging": false
+                            },
+                            "inputs": [
+                                {
+                                    "referenceName": "lks_brewery",
+                                    "type": "DatasetReference",
+                                    "parameters": {
+                                        "page": {
+                                            "value": "@variables('page')",
+                                            "type": "Expression"
+                                        }
+                                    }
+                                }
+                            ],
+                            "outputs": [
+                                {
+                                    "referenceName": "json_to_land",
+                                    "type": "DatasetReference",
+                                    "parameters": {
+                                        "unix_timestamp_until": {
+                                            "value": "@variables('unix_timestamp_until')",
+                                            "type": "Expression"
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "name": "temp variable",
+                            "type": "SetVariable",
+                            "dependsOn": [
+                                {
+                                    "activity": "copy data to land",
+                                    "dependencyConditions": [
+                                        "Succeeded"
+                                    ]
+                                }
+                            ],
+                            "policy": {
+                                "timeout": "0.12:00:00",
+                                "retry": 0,
+                                "retryIntervalInSeconds": 30,
+                                "secureOutput": false,
+                                "secureInput": false
+                            },
+                            "userProperties": [],
+                            "typeProperties": {
+                                "variableName": "nextPage",
+                                "value": {
+                                    "value": "@string(add(int(variables('page')), 1))",
+                                    "type": "Expression"
+                                }
+                            }
+                        },
+                        {
+                            "name": "breweries",
+                            "type": "WebActivity",
+                            "dependsOn": [
+                                {
+                                    "activity": "unix timestamp",
+                                    "dependencyConditions": [
+                                        "Succeeded"
+                                    ]
+                                }
+                            ],
+                            "policy": {
+                                "timeout": "0.12:00:00",
+                                "retry": 0,
+                                "retryIntervalInSeconds": 30,
+                                "secureOutput": false,
+                                "secureInput": false
+                            },
+                            "userProperties": [],
+                            "typeProperties": {
+                                "url": {
+                                    "value": "@concat('https://api.openbrewerydb.org/v1/breweries?page=',variables('page'),'&per_page=200')",
+                                    "type": "Expression"
+                                },
+                                "method": "GET"
+                            }
+                        },
+                        {
+                            "name": "updated variable",
+                            "type": "SetVariable",
+                            "dependsOn": [
+                                {
+                                    "activity": "temp variable",
+                                    "dependencyConditions": [
+                                        "Succeeded"
+                                    ]
+                                }
+                            ],
+                            "policy": {
+                                "timeout": "0.12:00:00",
+                                "retry": 0,
+                                "retryIntervalInSeconds": 30,
+                                "secureOutput": false,
+                                "secureInput": false
+                            },
+                            "userProperties": [],
+                            "typeProperties": {
+                                "variableName": "page",
+                                "value": {
+                                    "value": "@string(variables('nextPage'))",
+                                    "type": "Expression"
+                                }
+                            }
+                        },
+                        {
+                            "name": "unix timestamp",
+                            "type": "SetVariable",
+                            "dependsOn": [],
+                            "policy": {
+                                "timeout": "0.12:00:00",
+                                "retry": 0,
+                                "retryIntervalInSeconds": 30,
+                                "secureOutput": false,
+                                "secureInput": false
+                            },
+                            "userProperties": [],
+                            "typeProperties": {
+                                "variableName": "unix_timestamp_until",
+                                "value": {
+                                    "value": "@{div(sub(ticks(utcNow()), ticks('1970-01-01')),10000000)}",
+                                    "type": "Expression"
+                                }
+                            }
+                        }
+                    ],
+                    "timeout": "0.12:00:00"
+                }
+            },
+            {
+                "name": "initial page",
+                "description": "set current page",
+                "type": "SetVariable",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "variableName": "page",
+                    "value": {
+                        "value": "@string('40')",
+                        "type": "Expression"
+                    }
+                }
+            },
+            {
+                "name": "Notebook Bronze_Brewery",
+                "type": "DatabricksNotebook",
+                "dependsOn": [
+                    {
+                        "activity": "pagination",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": []
+            },
+            {
+                "name": "Notebook Silver_Brewery",
+                "type": "DatabricksNotebook",
+                "dependsOn": [
+                    {
+                        "activity": "Notebook Bronze_Brewery",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": []
+            },
+            {
+                "name": "Notebook Gold Brewery",
+                "type": "DatabricksNotebook",
+                "dependsOn": [
+                    {
+                        "activity": "Notebook Silver_Brewery",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": []
+            }
+        ],
+        "variables": {
+            "page": {
+                "type": "String"
+            },
+            "nextPage": {
+                "type": "String"
+            },
+            "unix_timestamp_until": {
+                "type": "String"
+            }
+        },
+        "folder": {
+            "name": "openbrewery"
+        },
+        "annotations": []
+    }
+}
