@@ -61,14 +61,23 @@ As the endpoint of List Brewery - https://api.openbrewerydb.org/v1/breweries ret
 as long as there were records (data) in the subsequent pages, the request would continue until the request result was empty. Records from all the countries below were requested in this way:
 
 Austria
+
 England
+
 France
+
 Isle of Man
+
 Ireland
+
 Poland
+
 Portugal
+
 Scotland
+
 SouthKorea
+
 United States
 
 In addition to the request with the copy data activity, which makes the request in the source and copies the data to our blob (container land) in the sink,
