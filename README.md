@@ -98,7 +98,7 @@ Filtrado por Brewery Type igual a large:
 ![power bi dashboard type large](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/79e77807-46e2-4df4-8401-c82c0b66a729)
 
 
-Custos do projeto: Abaixo imagem que mostra os custos desse ELT feito no totalmente no Azure.
+Custos do projeto: Abaixo imagem que mostra os custos desse ELT feito totalmente no Azure.
 
 ![custo](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/70063c62-10aa-4ccd-925d-768e3f01006a)
 
