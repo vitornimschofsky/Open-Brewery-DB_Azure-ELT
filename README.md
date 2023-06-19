@@ -22,6 +22,39 @@ ARCHITECTURE:
 
 ![arquitetura](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/db7b526f-2553-4e4a-9e52-3b8bd1b16a62)
 
+RESOURCE CREATION:
+
+Resource Group -
+
+![Captura de tela 2023-06-16 165129](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/6d08076c-c7a2-41c3-8484-5aa26a0820b8)
+
+Azure Data Factory -
+
+![criação do adf](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/55fbd588-31f6-4ba0-938a-8fbecddc3517)
+
+Azure Key Vault - 
+
+![criação da kv](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/7524f247-fff8-4adc-ad60-62a495dc368e)
+
+Azure Databricks -
+
+![criação databricks](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/832bac2d-2c3e-40c6-abb6-b0490d5167ed)
+
+Azure Storage -
+
+![storage](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/c9ad3cae-a774-4a87-b4c7-c56a5a3dd46c)
+
+Cluster Databricks -
+
+![cluster config](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/c5dc6601-1bad-4983-9c65-f5b8fda11afb)
+
+
+
+Toda a arquitetura foi feita na nuvem do Azure, segui com a seguinte estratégia:
+
+● Azure Data Factory: Utilizei para fazer a ingestão dos dados vindos da API pública, toda a esteira de dados é feita com a ferramen
+
+
 All the architecture was done in Azure cloud, I followed with the following strategy:
 
 ● Azure Data Factory: I used to do the ingestion of the data coming from the public API, all the data wake is done with the Azure Data Factory tool.
