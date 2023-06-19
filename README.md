@@ -66,6 +66,8 @@ Brewery_Gold lê a tabela bronze_brewery e cria uma tabela com as colunas releva
 
 O código dos três notebooks estão compartilhados na pasta source code. 
 
+Todos os códigos foram feitos em Python e Pyspark.
+
 Abaixo imagem das tabelas criadas no delta.
 ![armazenamento delta](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/2277cf7c-c4f2-430e-8522-266f275d6452)
 
