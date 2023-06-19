@@ -49,12 +49,6 @@ Cluster Databricks -
 ![cluster config](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/c5dc6601-1bad-4983-9c65-f5b8fda11afb)
 
 
-
-Toda a arquitetura foi feita na nuvem do Azure, segui com a seguinte estratégia:
-
-● Azure Data Factory: Utilizei para fazer a ingestão dos dados vindos da API pública, toda a esteira de dados é feita com a ferramen
-
-
 All the architecture was done in Azure cloud, I followed with the following strategy:
 
 ● Azure Data Factory: I used to do the ingestion of the data coming from the public API, all the data wake is done with the Azure Data Factory tool.
