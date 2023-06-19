@@ -26,7 +26,8 @@ Toda a arquitetura foi feita na nuvem do Azure, segui com a seguinte estratégia
 
 ● Azure Data Factory: Utilizei para fazer a ingestão dos dados vindos da API pública, toda a esteira de dados é feita com a ferramenta do Azure Data Factory.
 
-![pipeline](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/8d852f34-91a7-4b7f-8287-f81e6d396f46)
+![pipeline](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/38ab5806-6603-46aa-b31e-421612f01029)
+
 
 O JSON da pipeline esta na pasta source-code, nesse JSON podemos ver com detalhes toda a configuração da pipeline.
 
@@ -47,14 +48,17 @@ Além da requisição com a atividade copy data, que faz a requisição no sourc
 a pipeline roda os três notebooks, bronze, silver e gold nesta sequência.
 
 ● Blob Storage: Aqui foi feito o armazenamento de todos os arquivos JSON. O conteiner land é o destino de todo o fluxo de dados da Pipeline.
-![land](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/6aa2023f-b246-427c-84dc-b08a8f1ae521)
+
+![land](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/4b168860-ff9e-470b-b294-628280b96044)
+
 
 Criei uma variavel unix_timestamp, que gera dinâmicamente a current date data e hora em formato Unix, essa variavel vai servir para nomear o arquivo JSON com uma seguencia de numeros únicos.
 Utilizamos também como subpasta a data do dia que a pipeline foi executada.
 
 O file path do copy data do ADF para o blob foi esse abaixo:
 
-![path blob](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/2c7fe9c8-10f2-43ed-a0c7-132bc800dd21)
+![path blob](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/4061eee1-351e-404c-9034-f616776a8888)
+
 
 ● Azure Key Vault: Na criação do mount point foi necessário utilizar um token de conexão do storage, esse token foi armazenado na nossa secret blob-key.
 
@@ -71,7 +75,8 @@ O código dos três notebooks estão compartilhados na pasta source code.
 Todos os códigos foram feitos em Python e Pyspark.
 
 Abaixo imagem das tabelas criadas no delta.
-![armazenamento delta](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/2277cf7c-c4f2-430e-8522-266f275d6452)
+
+![armazenamento delta](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/bf6de641-0d2a-4d6c-aa04-7ca8bb19e839)
 
 
 ● Visualização dos dados através de um Dashboard no PowerBI:
@@ -80,18 +85,22 @@ Para visualizar e tirar alguns insights desse escopo de dados, montei um dashboa
 
 Filtrado para todos os cenários:
 
-![power bi dashboard total](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/8dcb56b8-7667-4175-a631-622930a0884f)
+![power bi dashboard total](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/9210b398-2f54-41b6-b3ca-43e8b8f28d01)
+
 
 Filtrado para o país South Korea:
 
-![power bi dashboard korea](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/6977f5aa-359a-45a9-87ac-0c7368de312a)
+![power bi dashboard korea](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/f5542219-94ce-455c-9369-f850a17ed3ab)
+
 
 Filtrado por Brewery Type igual a large:
 
-![power bi dashboard type large](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/3aaca854-eb1e-40db-88bd-6a3f46f4c47f)
+![power bi dashboard type large](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/79e77807-46e2-4df4-8401-c82c0b66a729)
+
 
 Custos do projeto: Abaixo imagem que mostra os custos desse ELT feito no totalmente no Azure.
 
-![custo](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/3acc17bb-f225-448d-9749-1e885bee4b94)
+![custo](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/70063c62-10aa-4ccd-925d-768e3f01006a)
+
 
 
