@@ -18,7 +18,9 @@ Ainda no Azure Databricks criei uma tabela bronze com o dataframe inicial sem tr
 Por fim na camada gold crio uma tabela delta final, para ser consumida no Power BI, onde será mostrado alguns insights referentes a quantidade de "Lojas" por tipo de "Loja" e por localização.
 
 ARQUITETURA:
-![arquitetura](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/017904eb-59b0-4208-9c9b-100043c0764a)
+
+![arquitetura](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/db7b526f-2553-4e4a-9e52-3b8bd1b16a62)
+
 
 Toda a arquitetura foi feita na nuvem do Azure, segui com a seguinte estratégia:
 
