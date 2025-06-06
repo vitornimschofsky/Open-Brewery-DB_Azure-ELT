@@ -128,11 +128,32 @@ o comando CMD ["pytest", "tests/test_transformations.py"] automatiza o docker.
 ┃ ┗ 📜test_transformations.py
 ┣ 📜Dockerfile
 ┣ 📜README.md
+● **Testes**
 
+Testes de Transformações com PySpark
+Este repositório inclui testes unitários escritos com pytest para validar as transformações de dados realizadas com PySpark.
+
+O arquivo tests/test_transformations.py contém um exemplo de teste que:
+
+Cria um DataFrame com dados fictícios de cervejarias;
+
+Realiza uma transformação de agrupamento por país (groupBy + count);
+
+Usa assert para validar se os resultados estão corretos:
+
+assert grouped_dict["USA"] == 2
+assert grouped_dict["Canada"] == 1
+Esse tipo de teste garante que as transformações no pipeline de dados estão funcionando conforme o esperado, mesmo com dados simulados.
+
+Por Opção vou elaborado apenas esse teste, porém, é possivel acrescentar outros tipos de testes por exemplo:
+ - Verificação de schemas das tabelas (tipagem e colunas esperadas)
+ - Testes de filtros, joins e agregações complexas
+ - Testes com dados faltantes ou inválidos (validação de qualidade dos dados)
+✔️ O teste é executado automaticamente ao rodar o container Docker.
 
 
 ● **Visualização dos dados através de um Dashboard no PowerBI**:
-
+<br><br>
 
 Para visualizar e tirar alguns insights desse escopo de dados, montei um dashboard que mostra a agregação da quantidade de Breweries de acordo com a sua localização e do seu tipo, segue abaixo a imagem da pagina de análise.
 
