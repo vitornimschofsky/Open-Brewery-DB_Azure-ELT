@@ -171,10 +171,9 @@ assert grouped_dict["USA"] == 2
 assert grouped_dict["Canada"] == 1
  <br><br>
 This type of test ensures that the data transformation logic works as expected, even with simulated data.
-
-● Only One Test Implemented by Choice, but Others Can Be Added
-For simplicity, only one basic test was implemented. However, other types of tests could be added, such as:
-
+ <br><br>
+● A single basic test was implemented for demonstration purposes. However, the test suite can be expanded with:
+ <br><br>
 Schema validation (expected columns and data types)
 
 Tests for filters, joins, and complex aggregations
