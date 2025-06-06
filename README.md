@@ -114,6 +114,75 @@ All code was done in Python and Pyspark.
 Below is a screenshot of the tables created in delta.
 
 ![armazenamento delta](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/e173cbf9-af5a-4e21-86c3-64f6661267f4)
+<br><br>
+● **Monitoring:**
+<br><br>
+Monitoring was not implemented, but here is a suggestion for its application:
+<br><br>
+Although this project was originally built on Azure, it is important to include some form of monitoring to ensure that the pipeline runs properly. This can include the creation of an alert table to track key indicators such as:
+
+Data Volume: compares the number of rows in the current month with the average of the last 6 months. If the variation exceeds ±20%, a flag is triggered.
+
+Null Values: checks critical columns and flags if there is a high number of missing values.
+
+Additionally, tools like Azure Monitor or Application Insights (or similar alternatives) can be used, along with email notifications or integrations with Teams or Slack to quickly alert the responsible team in case of failures.
+<br><br>
+● **Automated Tests in Docker:**
+<br><br>
+Automated transformation tests using Spark were implemented in an updated version of this project, running via Docker with the Bitnami Spark image. Docker image: https://github.com/bitnami/containers/tree/main/bitnami/spark
+
+With the following commands, the container is built and the test_transformations.py file is executed:
+<br><br>
+docker build -t spark-tests .
+<br><br>
+docker run --rm spark-tests
+<br><br>
+The image below shows the PySpark tests running automatically as soon as the container starts:
+<br><br>
+PySpark tests running automatically
+
+The command CMD ["pytest", "tests/test_transformations.py"] automates the Docker process. Simply running the container will automatically execute the tests using Pytest.
+
+sql
+Copiar
+Editar
+📦Open-Brewery-DB_Azure-ELT
+ ┣ 📂tests
+ ┃ ┗ 📜test_transformations.py
+ ┣ 📜Dockerfile
+ ┣ 📜README.md
+ <br><br>
+● **Tests:**
+Transformation Tests with PySpark:
+
+This repository includes unit tests written with Pytest to validate the data transformations performed using PySpark.
+
+The file tests/test_transformations.py contains a sample test that:
+
+Creates a DataFrame with sample brewery data;
+
+Applies a grouping transformation by country (groupBy + count);
+
+Uses assertions to verify the expected results:
+
+python
+Copiar
+Editar
+assert grouped_dict["USA"] == 2
+assert grouped_dict["Canada"] == 1
+This type of test ensures that the data transformation logic works as expected, even with simulated data.
+
+● Only One Test Implemented by Choice, but Others Can Be Added
+For simplicity, only one basic test was implemented. However, other types of tests could be added, such as:
+
+Schema validation (expected columns and data types)
+
+Tests for filters, joins, and complex aggregations
+
+Tests with missing or invalid data (data quality validation)
+
+✔️ The test runs automatically when the Docker container is executed.
+
 
 <br><br>
 ● **Visualization of the data through a Dashboard in PowerBI:**
