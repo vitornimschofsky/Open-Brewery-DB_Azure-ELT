@@ -139,6 +139,8 @@ docker run --rm spark-tests
 <br><br>
 The image below shows the PySpark tests running automatically as soon as the container starts:
 <br><br>
+![Testes rodando automaticamente](https://github.com/user-attachments/assets/6cfdbf55-fcf7-4bbc-9fb0-a48f54cc9e5b)
+<br><br>
 PySpark tests running automatically
 
 The command CMD ["pytest", "tests/test_transformations.py"] automates the Docker process. Simply running the container will automatically execute the tests using Pytest.
