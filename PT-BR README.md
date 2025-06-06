@@ -144,7 +144,8 @@ o comando CMD ["pytest", "tests/test_transformations.py"] automatiza o docker.
 <br><br>
 ● **Testes**
 <br><br>
-Testes de Transformações com PySpark
+**Testes de Transformações com PySpark:**
+<br><br>
 Este repositório inclui testes unitários escritos com pytest para validar as transformações de dados realizadas com PySpark.
 
 O arquivo tests/test_transformations.py contém um exemplo de teste que:
