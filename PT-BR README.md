@@ -129,7 +129,9 @@ o comando CMD ["pytest", "tests/test_transformations.py"] automatiza o docker.
 ┣ 📜README.md
 
 
+
 ● Visualização dos dados através de um Dashboard no PowerBI:
+
 
 Para visualizar e tirar alguns insights desse escopo de dados, montei um dashboard que mostra a agregação da quantidade de Breweries de acordo com a sua localização e do seu tipo, segue abaixo a imagem da pagina de análise.
 
