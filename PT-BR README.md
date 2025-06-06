@@ -125,8 +125,9 @@ Foi implementado em uma versão atualizada do projeto testes automatizados para 
 Imagen Docker: https://github.com/bitnami/containers/tree/main/bitnami/spark
 
 Com os comandos abaixo é feita a construção do container e a eventual execução do arquivo test_transformations.py:
+<br><br>
 docker build -t spark-tests .
-
+<br><br>
 docker run --rm spark-tests
 
 A imagem abaixo mostra os testes PySpark rodando automaticamente assim que o container é iniciado:
