@@ -122,11 +122,11 @@ A imagem abaixo mostra os testes PySpark rodando automaticamente assim que o con
 o comando CMD ["pytest", "tests/test_transformations.py"] automatiza o docker.
 É preciso apenas dar um docker run que o arquivo test_transformations.py ira rodar os testes com Pytest.
 
-Esrtutura
-├── Dockerfile
-├── README.md
-└── tests
-    └── test_transformations.py
+📦Open-Brewery-DB_Azure-ELT
+┣ 📂tests
+┃ ┗ 📜test_transformations.py
+┣ 📜Dockerfile
+┣ 📜README.md
 
 
 ● Visualização dos dados através de um Dashboard no PowerBI:
