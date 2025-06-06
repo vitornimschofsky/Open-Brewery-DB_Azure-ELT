@@ -105,7 +105,20 @@ Abaixo imagem das tabelas criadas no delta.
 
 ![armazenamento delta](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/bf6de641-0d2a-4d6c-aa04-7ca8bb19e839)
 
+● **Monitoramento**
+<br><br>
+O monitoramento não foi implementado porém deixo aqui minha sugestão de aplicação:
 
+Mesmo o projeto tendo sido feito inicialmente no Azure, é importante incluir algum tipo de monitoramento para garantir que o pipeline funcione corretamente. Isso pode incluir:
+Criação de uma tabela de alarme, que registre indicadores como:
+<br><br>
+Volumetria: compara o total de linhas do mês atual com a média dos últimos 6 meses. Se a variação for maior que 20% para mais ou para menos, uma flag é gerada.
+<br><br>
+Dados nulos: verifica colunas críticas e marca se houver um número alto de valores faltantes.
+<br><br>
+Também podem ser usadas ferramentas como Azure Monitor ou Application Insights (ou similares), além de alertas por e-mail ou em ferramentas como Teams ou Slack, para avisar rapidamente em caso de falhas.
+
+<br><br>
 ● **Testes Automatizados no Docker**
 <br><br>
 Foi implementado em uma versão atualizada do projeto testes automatizados para transformações em Spark, rodando via Docker usando a imagem Bitnami Spark.
@@ -128,6 +141,7 @@ o comando CMD ["pytest", "tests/test_transformations.py"] automatiza o docker.
 ┃ ┗ 📜test_transformations.py
 ┣ 📜Dockerfile
 ┣ 📜README.md
+<br><br>
 ● **Testes**
 <br><br>
 Testes de Transformações com PySpark
