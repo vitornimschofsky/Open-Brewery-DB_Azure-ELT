@@ -23,27 +23,27 @@ Por fim na camada gold crio uma tabela delta final, para ser consumida no Power 
 
 **CRIAÇÃO DE RECURSOS**:
 
-**Resource Group** 
+**Resource Group** -
 
 ![Captura de tela 2023-06-16 165129](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/6d08076c-c7a2-41c3-8484-5aa26a0820b8)
 
-**Azure Data Factory** 
+**Azure Data Factory** -
 
 ![criação do adf](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/55fbd588-31f6-4ba0-938a-8fbecddc3517)
 
-**Azure Key Vault** 
+**Azure Key Vault** -
 
 ![criação da kv](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/7524f247-fff8-4adc-ad60-62a495dc368e)
 
-**Azure Databricks** 
+**Azure Databricks** -
 
 ![criação databricks](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/832bac2d-2c3e-40c6-abb6-b0490d5167ed)
 
-**Azure Storage** 
+**Azure Storage** -
 
 ![storage](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/c9ad3cae-a774-4a87-b4c7-c56a5a3dd46c)
 
-**Cluster Databricks** 
+**Cluster Databricks** -
 
 ![cluster config](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/c5dc6601-1bad-4983-9c65-f5b8fda11afb)
 
@@ -111,8 +111,9 @@ Abaixo imagem das tabelas criadas no delta.
 Foi implementado em uma versão atualizada do projeto testes automatizados para transformações em Spark, rodando via Docker usando a imagem Bitnami Spark.
 Imagen Docker: https://github.com/bitnami/containers/tree/main/bitnami/spark
 
-Com os comandos abaixo constroi o container e roda o test_transformations.py:
+Com os comandos abaixo é feita a construção do container e a eventual execução do arquivo test_transformations.py:
 docker build -t spark-tests .
+
 docker run --rm spark-tests
 
 A imagem abaixo mostra os testes PySpark rodando automaticamente assim que o container é iniciado:
