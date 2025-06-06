@@ -139,7 +139,8 @@ docker run --rm spark-tests
 <br><br>
 The image below shows the PySpark tests running automatically as soon as the container starts:
 <br><br>
-![Testes rodando automaticamente](https://github.com/user-attachments/assets/6cfdbf55-fcf7-4bbc-9fb0-a48f54cc9e5b)
+![Testes rodando automaticamente](https://github.com/user-attachments/assets/0a18707f-f1c5-4f9a-9008-736d1e01243b)
+
 <br><br>
 PySpark tests running automatically
 
@@ -166,12 +167,11 @@ Creates a DataFrame with sample brewery data;
 Applies a grouping transformation by country (groupBy + count);
 
 Uses assertions to verify the expected results:
-
-python
-Copiar
-Editar
+ <br><br>
 assert grouped_dict["USA"] == 2
+ <br><br>
 assert grouped_dict["Canada"] == 1
+ <br><br>
 This type of test ensures that the data transformation logic works as expected, even with simulated data.
 
 ● Only One Test Implemented by Choice, but Others Can Be Added
