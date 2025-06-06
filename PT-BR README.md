@@ -7,52 +7,52 @@ A ideia do projeto é montar um ELT de um dado bruto ingerido inicialmente via a
 RESUMO:
 
 ● Através de uma requisição feita no endpoint List Breweries - https://api.openbrewerydb.org/v1/breweries, obtive todos os dados de todos os países no total de 8206 registros em formato JSON.
-
+<br><br>
 ● Armazenei os registros no Azure Blob Storage em um conteiner Land.
-
+<br><br>
 ● Foi necessário o uso do Azure Key Vault para criar alguns secrets e ocultar token e conexões nos nossos notebooks, visando sempre a conformidade e segurança.
-
+<br><br>
 ● Consumi esses arquivos JSON no Azure Databricks para fazer a estruturação do Data Lakehouse e fazer, também, as transformações necessárias.
 Utilizei o armazenamento Delta do databricks para estruturar a arquitetura de medalhão, me beneficiando da otimização e rapidez do DBSF.
 Ainda no Azure Databricks criei uma tabela bronze com o dataframe inicial sem transformações, na camada silver particionei a tabela inicial por países, onde criei tabelas Deltas na camada silver para cada país separadamente.
 Por fim na camada gold crio uma tabela delta final, para ser consumida no Power BI, onde será mostrado alguns insights referentes a quantidade de "Lojas" por tipo de "Loja" e por localização.
-
+<br><br>
 **ARQUITETURA**:
-
+<br><br>
 ![arquitetura](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/db7b526f-2553-4e4a-9e52-3b8bd1b16a62)
-
+<br><br>
 **CRIAÇÃO DE RECURSOS**:
-
+<br><br>
 **Resource Group** -
-
+<br><br>
 ![Captura de tela 2023-06-16 165129](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/6d08076c-c7a2-41c3-8484-5aa26a0820b8)
-
+<br><br>
 **Azure Data Factory** -
-
+<br><br>
 ![criação do adf](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/55fbd588-31f6-4ba0-938a-8fbecddc3517)
-
+<br><br>
 **Azure Key Vault** -
-
+<br><br>
 ![criação da kv](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/7524f247-fff8-4adc-ad60-62a495dc368e)
-
+<br><br>
 **Azure Databricks** -
-
+<br><br>
 ![criação databricks](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/832bac2d-2c3e-40c6-abb6-b0490d5167ed)
-
+<br><br>
 **Azure Storage** -
-
+<br><br>
 ![storage](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/c9ad3cae-a774-4a87-b4c7-c56a5a3dd46c)
-
+<br><br>
 **Cluster Databricks** -
-
+<br><br>
 ![cluster config](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/c5dc6601-1bad-4983-9c65-f5b8fda11afb)
 
 
 
 Toda a arquitetura foi feita na nuvem do Azure, segui com a seguinte estratégia:
-
+<br><br>
 ● **Azure Data Factory**: Utilizei para fazer a ingestão dos dados vindos da API pública, toda a esteira de dados é feita com a ferramenta do Azure Data Factory.
-
+<br><br>
 ![pipeline](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/38ab5806-6603-46aa-b31e-421612f01029)
 
 
@@ -75,7 +75,7 @@ Além da requisição com a atividade copy data, que faz a requisição no sourc
 a pipeline roda os três notebooks, bronze, silver e gold nesta sequência.
 
 ● **Blob Storage**: Aqui foi feito o armazenamento de todos os arquivos JSON. O conteiner land é o destino de todo o fluxo de dados da Pipeline.
-
+<br><br>
 ![land](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/4b168860-ff9e-470b-b294-628280b96044)
 
 
@@ -88,9 +88,9 @@ O file path do copy data do ADF para o blob foi esse abaixo:
 
 
 ● **Azure Key Vault**: Na criação do mount point foi necessário utilizar um token de conexão do storage, esse token foi armazenado na nossa secret blob-key.
-
+<br><br>
 ● **Azure Databricks**: Foram, criados três notebooks:
-
+<br><br>
 Brewery_Bronze lê os arquivos do blob e cria um dataframe único que é gravado em uma tabela delta chamada bronze_brewery.
 
 Brewery_Silver lê a tabela bronze_brewery que esta no delta e divide esse dataframe em dataframes particionados por país.
@@ -107,7 +107,7 @@ Abaixo imagem das tabelas criadas no delta.
 
 
 ● **Testes Automatizados no Docker**
-
+<br><br>
 Foi implementado em uma versão atualizada do projeto testes automatizados para transformações em Spark, rodando via Docker usando a imagem Bitnami Spark.
 Imagen Docker: https://github.com/bitnami/containers/tree/main/bitnami/spark
 
@@ -129,7 +129,7 @@ o comando CMD ["pytest", "tests/test_transformations.py"] automatiza o docker.
 ┣ 📜Dockerfile
 ┣ 📜README.md
 ● **Testes**
-
+<br><br>
 Testes de Transformações com PySpark
 Este repositório inclui testes unitários escritos com pytest para validar as transformações de dados realizadas com PySpark.
 
@@ -145,7 +145,7 @@ assert grouped_dict["USA"] == 2
 assert grouped_dict["Canada"] == 1
 Esse tipo de teste garante que as transformações no pipeline de dados estão funcionando conforme o esperado, mesmo com dados simulados.
 
-Por Opção vou elaborado apenas esse teste, porém, é possivel acrescentar outros tipos de testes por exemplo:
+● Por Opção vou elaborado apenas esse teste, porém, é possivel acrescentar outros tipos de testes por exemplo:
  - Verificação de schemas das tabelas (tipagem e colunas esperadas)
  - Testes de filtros, joins e agregações complexas
  - Testes com dados faltantes ou inválidos (validação de qualidade dos dados)
