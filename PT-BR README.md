@@ -150,31 +150,31 @@ Esse tipo de teste garante que as transformações no pipeline de dados estão f
  - Testes de filtros, joins e agregações complexas
  - Testes com dados faltantes ou inválidos (validação de qualidade dos dados)
 ✔️ O teste é executado automaticamente ao rodar o container Docker.
-
+<br><br>
 
 ● **Visualização dos dados através de um Dashboard no PowerBI**:
 <br><br>
 
 Para visualizar e tirar alguns insights desse escopo de dados, montei um dashboard que mostra a agregação da quantidade de Breweries de acordo com a sua localização e do seu tipo, segue abaixo a imagem da pagina de análise.
-
+<br><br>
 Filtrado para todos os cenários:
-
+<br><br>
 ![power bi dashboard total](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/9210b398-2f54-41b6-b3ca-43e8b8f28d01)
-
+<br><br>
 
 Filtrado para o país South Korea:
-
+<br><br>
 ![power bi dashboard korea](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/f5542219-94ce-455c-9369-f850a17ed3ab)
-
+<br><br>
 
 Filtrado por Brewery Type igual a large:
-
+<br><br>
 ![power bi dashboard type large](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/79e77807-46e2-4df4-8401-c82c0b66a729)
-
+<br><br>
 
 Custos do projeto: Abaixo imagem que mostra os custos desse ELT feito totalmente no Azure.
-
+<br><br>
 ![custo](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/70063c62-10aa-4ccd-925d-768e3f01006a)
-
+<br><br>
 
 
