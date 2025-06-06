@@ -146,9 +146,7 @@ PySpark tests running automatically
 
 The command CMD ["pytest", "tests/test_transformations.py"] automates the Docker process. Simply running the container will automatically execute the tests using Pytest.
 
-sql
-Copiar
-Editar
+
 📦Open-Brewery-DB_Azure-ELT
  ┣ 📂tests
  ┃ ┗ 📜test_transformations.py
@@ -183,7 +181,7 @@ Tests for filters, joins, and complex aggregations
 
 Tests with missing or invalid data (data quality validation)
 
-✔️ The test runs automatically when the Docker container is executed.
+The test runs automatically when the Docker container is executed.
 
 
 <br><br>
