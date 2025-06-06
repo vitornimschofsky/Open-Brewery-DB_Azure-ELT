@@ -25,7 +25,7 @@ Finally in the gold layer I create a final delta table, to be consumed in Power 
 <br><br>
 **RESOURCE CREATION:**
 <br><br>
-**Resource Group -**
+                                                       **Resource Group -**
 <br><br>
 ![Captura de tela 2023-06-16 165129](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/6d08076c-c7a2-41c3-8484-5aa26a0820b8)
 <br><br>
