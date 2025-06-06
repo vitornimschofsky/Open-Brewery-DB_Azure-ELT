@@ -106,6 +106,29 @@ Abaixo imagem das tabelas criadas no delta.
 ![armazenamento delta](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/bf6de641-0d2a-4d6c-aa04-7ca8bb19e839)
 
 
+● Testes Automatizados no Docker
+
+Foi implementado em uma versão atualizada do projeto testes automatizados para transformações em Spark, rodando via Docker usando a imagem Bitnami Spark.
+Imagen Docker: https://github.com/bitnami/containers/tree/main/bitnami/spark
+
+Com os comandos abaixo constroi o container e roda o test_transformations.py:
+docker build -t spark-tests .
+docker run --rm spark-tests
+
+A imagem abaixo mostra os testes PySpark rodando automaticamente assim que o container é iniciado:
+
+![Testes rodando automaticamente](https://github.com/vitornimschofsky/Open-Brewery-DB_Azure-ELT/assets/89933194/NOME_DA_IMAGEM.png)
+
+o comando CMD ["pytest", "tests/test_transformations.py"] automatiza o docker.
+É preciso apenas dar um docker run que o arquivo test_transformations.py ira rodar os testes com Pytest.
+
+Esrtutura
+├── Dockerfile
+├── README.md
+└── tests
+    └── test_transformations.py
+
+
 ● Visualização dos dados através de um Dashboard no PowerBI:
 
 Para visualizar e tirar alguns insights desse escopo de dados, montei um dashboard que mostra a agregação da quantidade de Breweries de acordo com a sua localização e do seu tipo, segue abaixo a imagem da pagina de análise.
